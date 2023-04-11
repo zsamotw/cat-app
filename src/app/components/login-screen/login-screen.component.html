@@ -1,0 +1,16 @@
+<div class="container">
+  <form class="login-form" (submit)="onSubmit()">
+    <mat-form-field class="full-width">
+      <mat-label>Login</mat-label>
+      <input matInput placeholder="Type your login" [(ngModel)]="loginData.userName"
+        (ngModelChange)="hideIncorrectLoginWarning()" name="login" [required]="true">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" placeholder="Type your password" [(ngModel)]="loginData.password"
+        (ngModelChange)="hideIncorrectLoginWarning()" name="password" [required]="true">
+    </mat-form-field>
+    <div *ngIf="isIncorrectLoginData" class="incorrect-login-warning">Login or password are incorrect</div>
+    <button mat-flat-button color="primary">Login</button>
+  </form>
+</div>

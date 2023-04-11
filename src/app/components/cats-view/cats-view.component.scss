@@ -1,0 +1,29 @@
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.inner-container {
+  position: relative;
+}
+
+.scroll-container {
+  height: 70vh;
+  width: 40vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 16px;
+}
+
+.spinner {
+  position: absolute;
+  left: -25px;
+}
+
+.card {
+  width: 80%;
+  margin-bottom: 16px;
+}
