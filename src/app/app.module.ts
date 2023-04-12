@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { LoginScreenComponent } from './components/login-screen/login-screen.component';
-import { CatsViewComponent } from './components/cats-view/cats-view.component';
+import { CatsListViewComponent } from './components/cats-list-view/cats-list-view.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -17,13 +17,15 @@ import { MainAppViewComponent } from './components/main-app-view/main-app-view.c
 import { MatIconModule } from '@angular/material/icon'
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { CatsListControllerComponent } from './components/cats-list-controller/cats-list-controller.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginScreenComponent,
-    CatsViewComponent,
-    MainAppViewComponent
+    MainAppViewComponent,
+    CatsListControllerComponent,
+    CatsListViewComponent,
   ],
   imports: [
     BrowserModule,

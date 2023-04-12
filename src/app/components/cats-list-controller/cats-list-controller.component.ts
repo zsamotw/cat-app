@@ -4,11 +4,11 @@ import { Response } from '../../model/response';
 import { CatService } from '../../services/cat.service';
 
 @Component({
-  selector: 'app-cats-view',
-  templateUrl: './cats-view.component.html',
-  styleUrls: ['./cats-view.component.scss']
+  selector: 'app-cats-list-controller',
+  templateUrl: './cats-list-controller.component.html',
+  styleUrls: ['./cats-list-controller.component.scss']
 })
-export class CatsViewComponent implements OnInit, OnDestroy {
+export class CatsListControllerComponent implements OnInit, OnDestroy {
 
   items: string[] = [];
 
