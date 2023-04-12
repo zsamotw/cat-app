@@ -10,6 +10,9 @@ const url = 'https://meowfacts.herokuapp.com/'
 })
 export class CatService {
 
+  requestsNumberOnInit = 20;
+  requestsNumberOnScroll = 10;
+
   constructor(private http: HttpClient) { }
 
   getCatFacts(repeatNumber?: number): Observable<Response> {

@@ -18,6 +18,9 @@ export class LoginScreenComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['cats']);
+    }
   }
 
 
@@ -28,10 +31,10 @@ export class LoginScreenComponent implements OnInit {
   onSubmit(): void {
     const user = this.authService.getUser(this.loginData);
     if (user) {
-      this.router.navigate(['cats'])
+      this.authService.setCurrentUser(user.userName);
+      this.router.navigate(['cats']);
     } else {
       this.isIncorrectLoginData = true;
     }
   }
-
 }
