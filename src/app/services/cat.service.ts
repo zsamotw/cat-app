@@ -16,6 +16,6 @@ export class CatService {
   constructor(private http: HttpClient) { }
 
   getCatFacts(repeatNumber?: number): Observable<Response> {
-    return this.http.get(url).pipe(repeat(repeatNumber ?? 1)) as Observable<any>;
+    return this.http.get(url).pipe(repeat(repeatNumber ?? 1)) as unknown as Observable<Response>;
   }
 }

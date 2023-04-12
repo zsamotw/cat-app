@@ -15,11 +15,13 @@ export class CatsViewComponent implements OnInit, OnDestroy {
   isLoading = false;
   isError = false;
   notifier$ = new Subject()
+  numberOfSkeletons = 0;
 
   constructor(private catService: CatService) { }
 
   ngOnInit(): void {
     this.isLoading = true;
+    this.numberOfSkeletons = 10;
     let aggregatedItems: string[] = [];
 
     this.catService
@@ -44,6 +46,7 @@ export class CatsViewComponent implements OnInit, OnDestroy {
 
   onScroll(): void {
     this.isLoading = true;
+    this.numberOfSkeletons = 5;
     this.isError = false;
 
     let aggregatedItems: string[] = [];

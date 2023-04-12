@@ -1,16 +1,16 @@
-<div class="inner-container">
-  <div infinite-scroll [infiniteScrollDistance]="0" [infiniteScrollThrottle]="1000" [alwaysCallback]="true"
-    [scrollWindow]="false" (scrolled)="onScroll()" class="scroll-container">
-    <mat-card *ngFor="let item of items" class="card">
-      <mat-card-content>
-        {{item}}
-      </mat-card-content>
-    </mat-card>
-    <mat-card *ngIf="isError" class="card error">
-      <mat-card-content>An error occurred</mat-card-content>
-    </mat-card>
-    <mat-card *ngIf="isLoading" class="spinner card">
-      <mat-spinner [diameter]="30"></mat-spinner>
-    </mat-card>
-  </div>
+<div infinite-scroll [infiniteScrollDistance]="0" [infiniteScrollThrottle]="1000" [alwaysCallback]="true"
+  [scrollWindow]="false" (scrolled)="onScroll()" class="scroll-container">
+  <mat-card *ngFor="let item of items" class="card">
+    <mat-card-content>
+      {{item}}
+    </mat-card-content>
+  </mat-card>
+  <mat-card *ngIf="isError" class="card error">
+    <mat-card-content>An error occurred</mat-card-content>
+  </mat-card>
+  <ng-container *ngIf="isLoading">
+    <ngx-skeleton-loader [count]="numberOfSkeletons" appearance="line"
+      [theme]="{'height': '65px', 'margin': '0 10% 24px', 'width': '80%'}">
+    </ngx-skeleton-loader>
+  </ng-container>
 </div>

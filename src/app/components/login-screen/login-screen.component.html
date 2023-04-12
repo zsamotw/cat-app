@@ -10,7 +10,8 @@
       <input matInput type="password" placeholder="Type your password" [(ngModel)]="loginData.password"
         (ngModelChange)="hideIncorrectLoginWarning()" name="password" [required]="true">
     </mat-form-field>
-    <div *ngIf="isIncorrectLoginData" class="incorrect-login-warning">Login or password are incorrect</div>
+    <div *ngIf="isIncorrectLoginData" class="incorrect-login-warning error">Login or password are
+      incorrect</div>
     <button mat-flat-button color="primary">Login</button>
   </form>
 </div>

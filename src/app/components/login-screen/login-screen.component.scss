@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  margin: 0 10%;
 }
 .login-form {
   display: flex;
@@ -12,12 +13,7 @@
   width: 100%;
 }
 
-.full-width {
-  width: 100%;
-}
-
 .incorrect-login-warning {
-  color: red;
   padding-top: 8px;
   padding-bottom: 16px;
 }

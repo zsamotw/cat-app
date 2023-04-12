@@ -1,27 +1,10 @@
-.inner-container {
-  position: relative;
-}
-
 .scroll-container {
-  height: 70vh;
-  width: 60vh;
+  height: calc(100vh - 64px);
   overflow-y: scroll;
   overflow-x: hidden;
   padding: 16px;
 }
 
-.spinner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-}
-
-.error {
-  color: red;
-}
-
 .card {
-  width: 80%;
-  margin-bottom: 16px;
+  margin: 0 10% 24px;
 }
