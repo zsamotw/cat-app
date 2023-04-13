@@ -7,12 +7,16 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./main-app-view.component.scss']
 })
 export class MainAppViewComponent {
+  isLoading = false;
 
   constructor(public authService: AuthService) { }
 
   logout() {
-    console.log('log1')
     this.authService.logout();
+  }
+
+  onLoading(event: boolean) {
+    this.isLoading = event;
   }
 
 }

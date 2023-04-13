@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { Response } from '../../models/response.interface';
 import { CatService } from '../../services/cat.service';
@@ -9,6 +9,8 @@ import { CatService } from '../../services/cat.service';
   styleUrls: ['./cats-list-controller.component.scss']
 })
 export class CatsListControllerComponent implements OnInit, OnDestroy {
+
+  @Output() loading = new EventEmitter<boolean>();
 
   items: string[] = [];
 
@@ -21,6 +23,8 @@ export class CatsListControllerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isLoading = true;
+    this.loading.emit(true)
+
     this.numberOfSkeletons = 10;
     let aggregatedItems: string[] = [];
 
@@ -39,7 +43,9 @@ export class CatsListControllerComponent implements OnInit, OnDestroy {
       }, complete: () => {
         const uniqueItems = new Set([...this.items, ...aggregatedItems]);
         this.items = [...uniqueItems]
+
         this.isLoading = false
+        this.loading.emit(false)
       }
 
     }
@@ -47,8 +53,10 @@ export class CatsListControllerComponent implements OnInit, OnDestroy {
 
   onLoadMoreItems(): void {
     this.numberOfSkeletons = 5;
-    this.isLoading = true;
     this.isError = false;
+
+    this.isLoading = true;
+    this.loading.emit(true)
 
     let aggregatedItems: string[] = [];
 
