@@ -22,5 +22,4 @@ export class MainAppViewComponent implements AfterViewInit {
   onLoading(event: boolean) {
     this.isLoading = event;
   }
-
 }

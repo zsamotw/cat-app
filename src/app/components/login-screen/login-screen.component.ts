@@ -23,7 +23,6 @@ export class LoginScreenComponent implements OnInit {
     }
   }
 
-
   hideIncorrectLoginWarning() {
     this.isIncorrectLoginData = false;
   }
