@@ -34,7 +34,7 @@ export class LoginScreenComponent implements OnInit {
       this.authService.setCurrentUser(user.userName);
       this.router.navigate(['cats']);
     } else {
-      this.isIncorrectLoginData = true;
+      this.isIncorrectLoginData = !!this.loginData.userName && !!this.loginData.password;
     }
   }
 }

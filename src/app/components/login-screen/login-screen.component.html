@@ -3,15 +3,17 @@
     <mat-form-field class="full-width">
       <mat-label>Login</mat-label>
       <input matInput placeholder="Type your login" [(ngModel)]="loginData.userName"
-        (ngModelChange)="hideIncorrectLoginWarning()" name="login" [required]="true">
+        (ngModelChange)="hideIncorrectLoginWarning()" name="userName" #userName="ngModel" [required]="true" autofocus>
+      <mat-error *ngIf="userName.hasError">This field is required</mat-error>
     </mat-form-field>
     <mat-form-field class="full-width">
       <mat-label>Password</mat-label>
       <input matInput type="password" placeholder="Type your password" [(ngModel)]="loginData.password"
-        (ngModelChange)="hideIncorrectLoginWarning()" name="password" [required]="true">
+        (ngModelChange)="hideIncorrectLoginWarning()" name="password" #password="ngModel" [required]="true">
+      <mat-error *ngIf="password.hasError">This field is required</mat-error>
     </mat-form-field>
-    <div *ngIf="isIncorrectLoginData" class="incorrect-login-warning error">Login or password are
+    <div *ngIf="isIncorrectLoginData" class="incorrect-login-warning error">Login or password is
       incorrect</div>
-    <button mat-flat-button color="primary">Login</button>
+    <button mat-flat-button color="primary" class="submit-button">Login</button>
   </form>
 </div>
