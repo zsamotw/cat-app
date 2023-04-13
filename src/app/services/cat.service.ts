@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, repeat } from 'rxjs';
-import { Response } from '../model/response'
+import { Response } from '../models/response.interface'
 
 const url = 'https://meowfacts.herokuapp.com/'
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginData } from '../model/loginData';
+import { LoginData } from '../models/login-data.interface';
 
 
 const usersMock = [{ userName: 'admin', password: 'admin' }]
