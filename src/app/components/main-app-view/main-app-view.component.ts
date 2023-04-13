@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, AfterViewInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -6,10 +6,14 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './main-app-view.component.html',
   styleUrls: ['./main-app-view.component.scss']
 })
-export class MainAppViewComponent {
+export class MainAppViewComponent implements AfterViewInit {
   isLoading = false;
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService, private cdr: ChangeDetectorRef) { }
+
+  ngAfterViewInit() {
+    this.cdr.detectChanges();
+  }
 
   logout() {
     this.authService.logout();

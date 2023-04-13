@@ -1,11 +1,11 @@
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnChanges, Output, SimpleChange, SimpleChanges, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-cats-list-view',
   templateUrl: './cats-list-view.component.html',
   styleUrls: ['./cats-list-view.component.scss']
 })
-export class CatsListViewComponent {
+export class CatsListViewComponent implements OnChanges {
   @ViewChild('scrollContainer') scrollContainer?: ElementRef<HTMLDivElement>;
 
   @Input() items: string[] = [];
@@ -15,8 +15,18 @@ export class CatsListViewComponent {
 
   @Output() loadMoreItems = new EventEmitter();
 
-  showLoadButton() {
-    return !this.isLoading && this.scrollContainer && this.scrollContainer.nativeElement.clientWidth <= this.scrollContainer.nativeElement.scrollWidth;
+  showLoadButton = false;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!changes['isLoading']?.currentValue) {
+      this.showLoadButton = !this.hasScroll();
+    } else {
+      this.showLoadButton = false;
+    }
+  }
+
+  private hasScroll() {
+    return this.scrollContainer ? this.scrollContainer.nativeElement.clientHeight < this.scrollContainer.nativeElement.scrollHeight : false;
   }
 
   loadMore() {
