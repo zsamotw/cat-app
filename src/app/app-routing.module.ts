@@ -6,8 +6,8 @@ import { MainAppViewComponent } from './components/main-app-view/main-app-view.c
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginScreenComponent },
-  { path: 'cats', component: MainAppViewComponent, canActivate: [AuthGuard] },
+  { path: 'login', pathMatch: 'full', component: LoginScreenComponent },
+  { path: 'cats', pathMatch: 'full', component: MainAppViewComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'login' }
 ];
 
