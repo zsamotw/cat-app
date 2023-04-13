@@ -1,16 +1,19 @@
 <div infinite-scroll [infiniteScrollDistance]="0" [infiniteScrollThrottle]="1000" [alwaysCallback]="true"
-  [scrollWindow]="false" (scrolled)="onScroll()" class="scroll-container">
-  <mat-card *ngFor="let item of items" class="card">
+  [scrollWindow]="false" (scrolled)="loadMore()" class="scroll-container" #scrollContainer>
+  <mat-card *ngFor="let item of items" class="item">
     <mat-card-content>
       {{item}}
     </mat-card-content>
   </mat-card>
-  <mat-card *ngIf="isError" class="card error">
+  <mat-card *ngIf="isError" class="item error">
     <mat-card-content>An error occurred</mat-card-content>
   </mat-card>
-  <ng-container *ngIf="true">
+  <ng-container *ngIf="isLoading">
     <ngx-skeleton-loader [count]="numberOfSkeletons" appearance="line"
       [theme]="{'height': '65px', 'margin': '0 10% 24px', 'width': '80%'}">
     </ngx-skeleton-loader>
+  </ng-container>
+  <ng-container *ngIf="showLoadButton()">
+    <button mat-raised-button color="primary" (click)="loadMore()" class="item load-button">Load more</button>
   </ng-container>
 </div>

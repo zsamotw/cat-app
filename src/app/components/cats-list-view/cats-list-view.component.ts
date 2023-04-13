@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-cats-list-view',
@@ -6,15 +6,20 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./cats-list-view.component.scss']
 })
 export class CatsListViewComponent {
+  @ViewChild('scrollContainer') scrollContainer?: ElementRef<HTMLDivElement>;
 
   @Input() items: string[] = [];
   @Input() isError = false;
   @Input() isLoading = false;
   @Input() numberOfSkeletons = 0;
 
-  @Output() scroll = new EventEmitter();
+  @Output() loadMoreItems = new EventEmitter();
 
-  onScroll() {
-    this.scroll.emit();
+  showLoadButton() {
+    return !this.isLoading && this.scrollContainer && this.scrollContainer.nativeElement.clientWidth <= this.scrollContainer.nativeElement.scrollWidth;
+  }
+
+  loadMore() {
+    this.loadMoreItems.emit();
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
-import { Response } from '../../model/response';
+import { Response } from '../../models/response.interface';
 import { CatService } from '../../services/cat.service';
 
 @Component({
@@ -37,16 +37,17 @@ export class CatsListControllerComponent implements OnInit, OnDestroy {
       }, error: (error: Error) => {
         this.isError = true;
       }, complete: () => {
-        this.items = [...this.items, ...aggregatedItems];
+        const uniqueItems = new Set([...this.items, ...aggregatedItems]);
+        this.items = [...uniqueItems]
         this.isLoading = false
       }
 
     }
   }
 
-  onScroll(): void {
-    this.isLoading = true;
+  onLoadMoreItems(): void {
     this.numberOfSkeletons = 5;
+    this.isLoading = true;
     this.isError = false;
 
     let aggregatedItems: string[] = [];

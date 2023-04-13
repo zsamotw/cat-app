@@ -2,9 +2,14 @@
   height: calc(100vh - 64px);
   overflow-y: scroll;
   overflow-x: hidden;
-  padding: 16px;
+  padding: 56px 16px 0;
 }
 
-.card {
+.item {
   margin: 0 10% 24px;
+}
+
+.load-button {
+  width: 80%;
+  margin-top: 16px;
 }
