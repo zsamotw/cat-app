@@ -1,7 +1,7 @@
-<div infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="1000" [alwaysCallback]="true"
-  [scrollWindow]="false" (scrolled)="loadMore()" class="scroll-container" #scrollContainer>
+<section infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="1000" [alwaysCallback]="true"
+  [scrollWindow]="false" (scrolled)="loadMore()" class="scroll-container">
   <mat-card *ngFor="let item of items" class="item">
-    <mat-card-content>
+    <mat-card-content class="item-content">
       {{item}}
     </mat-card-content>
   </mat-card>
@@ -10,10 +10,7 @@
   </mat-card>
   <ng-container *ngIf="isLoading">
     <ngx-skeleton-loader [count]="numberOfSkeletons" appearance="line"
-      [theme]="{'height': '65px', 'margin': '0 10% 24px', 'width': '80%'}">
+      [theme]="{'height': '10rem', 'margin': '0 10% 24px', 'width': '80%'}">
     </ngx-skeleton-loader>
   </ng-container>
-  <ng-container *ngIf="showLoadButton">
-    <button mat-raised-button color="primary" (click)="loadMore()" class="item load-button">Load more</button>
-  </ng-container>
-</div>
+</section>

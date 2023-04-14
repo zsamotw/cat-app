@@ -6,7 +6,17 @@
 }
 
 .item {
-  margin: 0 10% 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 10rem;
+  margin: 0 10% 32px;
+}
+
+.item-content {
+  line-height: 32px;
+  font-size: 24px;
+
 }
 
 .load-button {
